@@ -1,13 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-import { SignInButton } from '../SignInButton';
+import { SignInButton } from "../SignInButton";
 
-import { ActiveLink } from '../ActiveLink';
+import { ActiveLink } from "../ActiveLink";
 
-import logoSvg from '../../../public/images/logo.svg';
-
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 export function Header() {
   return (
@@ -15,7 +13,12 @@ export function Header() {
       <div className={styles.headerContent}>
         <Link href="/">
           <a>
-            <Image src={logoSvg} alt="ig.news logo" />
+            <Image
+              src="/images/logo.svg"
+              alt="ig.news logo"
+              width={100}
+              height={100}
+            />
           </a>
         </Link>
         <nav>
