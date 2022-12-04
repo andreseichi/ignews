@@ -1,14 +1,14 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps } from "next";
 
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from "next/head";
+import Image from "next/image";
 
-import avatarSvg from '../../public/images/avatar.svg';
-import { SubscribeButton } from '../components/SubscribeButton';
+import avatarSvg from "../../public/images/avatar.svg";
+import { SubscribeButton } from "../components/SubscribeButton";
 
-import { stripe } from '../services/stripe';
+import { stripe } from "../services/stripe";
 
-import styles from './home.module.scss';
+import styles from "./home.module.scss";
 
 interface HomeProps {
   product: {
@@ -35,7 +35,7 @@ export default function Home({ product }: HomeProps) {
             <span>for {product.amount} month</span>
           </p>
 
-          <SubscribeButton priceId={product.priceId} />
+          <SubscribeButton />
         </section>
 
         <Image src={avatarSvg} alt="Girl coding" />
@@ -45,13 +45,13 @@ export default function Home({ product }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve('price_1JhIo9DQIkWjilDR19OnBdTF');
+  const price = await stripe.prices.retrieve("price_1JhIo9DQIkWjilDR19OnBdTF");
 
   const product = {
     priceId: price.id,
-    amount: new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    amount: new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
     }).format(price.unit_amount / 100),
   };
 
