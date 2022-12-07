@@ -1,6 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import Home from "../../pages";
 
+jest.mock("next/router");
+jest.mock("next-auth/client", () => {
+  return {
+    useSession: () => [null, false],
+  };
+});
+
 describe("Home page", () => {
   it("renders correctly", () => {
     render(
@@ -12,6 +19,6 @@ describe("Home page", () => {
       />
     );
 
-    expect(screen.getByText("$9.90")).toBeInTheDocument();
+    expect(screen.getByText("for $9.90 month")).toBeInTheDocument();
   });
 });
