@@ -14,11 +14,7 @@ export async function saveSubscription(
     )
   );
 
-  console.log('userRef', userRef)
-
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-
-  console.log('subscription', subscription);
 
   const subscriptionData = {
     id: subscription.id,

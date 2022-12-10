@@ -63,13 +63,9 @@ export default async function Webhooks(
 
             break;
           case 'checkout.session.completed':
-            console.log('checkout completed')
             const checkoutSession = event.data
               .object as Stripe.Checkout.Session;
             
-            console.log('checkoutSession', checkoutSession)
-
-
             await saveSubscription(
               checkoutSession.subscription.toString(),
               checkoutSession.customer.toString(),
