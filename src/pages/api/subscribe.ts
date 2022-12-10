@@ -52,6 +52,8 @@ export default async function subscribe(
       success_url: process.env.STRIPE_SUCCESS_URL,
       cancel_url: process.env.STRIPE_CANCEL_URL,
     });
+    
+    console.log('stripeCheckoutSession', stripeCheckoutSession)
 
     return res.status(200).json({ sessionId: stripeCheckoutSession.id });
   } else {
